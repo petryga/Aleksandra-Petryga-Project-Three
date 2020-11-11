@@ -1,3 +1,10 @@
+$gunmetal: #292F36;
+$turquoise: #4ECDC4;
+$cream: #F7FFF7; 
+$bittersweet: #FF6B6B;
+$yellow: #FFE66D;
+
+
 * {
   margin: 0;
   padding: 0;
@@ -6,10 +13,14 @@
 
 html {
   font-size: 62.5%;
+    background-color: $gunmetal;
+    
 }
 
 body {
-  font-family: "Josefin Sans", sans-serif;
+font-family: 'Lato', sans-serif;
+letter-spacing: .04rem;
+word-spacing: 0.4rem;
   text-transform: uppercase;
 }
 
@@ -32,6 +43,7 @@ a {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
+
 }
 
 input,
@@ -39,3 +51,5 @@ button,
 label {
   display: block;
 }
+
+

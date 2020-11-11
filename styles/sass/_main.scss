@@ -1,5 +1,17 @@
 header {
   text-align: center;
+  h1 {
+    font-size: 2.5rem;
+    color: $turquoise;
+    margin: 2rem auto;
+
+  }
+  p {
+    font-size: 1.6rem;
+    // color: $yellow;
+    color: $cream;
+    margin-bottom: 2rem;
+  }
 }
 
 .image img {
@@ -9,7 +21,7 @@ header {
 }
 
 .image {
-  background: url(/Users/ax/Dropbox/juno/bootcamp/project3/assets/aurora-purple.jpg);
+  background-image: url(../assets/aurora-green.jpg);
   background-size: calc(100% + 100px);
   background-repeat: no-repeat;
 }
@@ -19,20 +31,24 @@ header {
 }
 
 .btns {
-  margin: 0 auto;
+  margin: 2rem auto;
   justify-content: space-evenly;
+
   button {
-    padding: 5px 15px;
-    background-color: darkcyan;
-    color: white;
+    font-family: 'Lato', sans-serif;
+    padding: 10px 25px;
+    background-color: $bittersweet;
+    color: $cream;
     text-transform: inherit;
     letter-spacing: .2rem;
+    font-weight: bold;
+    border-radius: 3px;
   }
 }
 
 footer {
 justify-content: end;
-margin-top: 50px;
+text-transform: lowercase;
 .credits {
     flex-direction: column;
   }

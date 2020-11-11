@@ -34,51 +34,51 @@ $(function () {
 const backgroundImages = [
     {
         mood: 'aurora',
-        url: '/assets/aurora-green.jpg',
+        url: '../assets/aurora-green.jpg',
     },
     {
         mood: 'aurora',
-        url: '/assets/aurora-purple.jpg',
+        url: '../assets/aurora-purple.jpg',
     },
     {
         mood: 'cartoon',
-        url: '/assets/cartoon-blue.jpg',
+        url: '../assets/cartoon-blue.jpg',
     },
     {
         mood: 'cartoon',
-        url: '/assets/cartoon-dark-blue.jpg',
+        url: '../assets/cartoon-dark-blue.jpg',
     },
     {
         mood: 'cartoon',
-        url: '/assets/cartoon-purple.jpg',
+        url: '../assets/cartoon-purple.jpg',
     },
     {
         mood: 'cartoon',
-        url: '/assets/cartoon-yellow.jpg',
+        url: '../assets/cartoon-yellow.jpg',
     },
     {
         mood: 'clouds',
-        url: '/assets/clouds-dramatic.jpg',
+        url: '../assets/clouds-dramatic.jpg',
     },
     {
         mood: 'clouds',
-        url: '/assets/clouds-pink.jpg',
+        url: '../assets/clouds-pink.jpg',
     },
     {
         mood: 'clouds',
-        url: '/assets/clouds-purple.jpg',
+        url: '../assets/clouds-purple.jpg',
     },
     {
         mood: 'clouds',
-        url: '/assets/clouds-sunset.jpg',
+        url: '../assets/clouds-sunset.jpg',
     },
     {
         mood: 'yellow',
-        url: '/assets/yellow-birds.jpg',
+        url: '../assets/yellow-birds.jpg',
     },
     {
         mood: 'yellow',
-        url: '/assets/yellow-sun.jpg',
+        url: '../assets/yellow-sun.jpg',
     },
 ]
 const skylineImages = [
@@ -101,14 +101,28 @@ return item.url
 })
 console.log(allBackgroundUrls);
 
-// allBackgroundUrls.forEach((item) => {
-// })
+let currentBackground = 0;
 
+$(".image").click(function (e) {
+    // backgroundImages.forEach(function (item) 
+    // {
+        e.preventDefault();
+        const singleBackgroundUrl = backgroundImages[currentBackground].url;
 
-$(".image").click(function () {
-    const imageUrl = allBackgroundImages['url']
-    $(".image").css("background-image", "url(" + imageUrl + ")");
+       
+        // console.log(item.url);
+
+    $(".image").css("background-image", "../assets/yellow-sun.jpg");
+        
+        // `url(${singleBackgroundUrl})`);
+        currentBackground++;
+        if (currentBackground === backgroundImages.length)
+        currentBackground = 0
+
+        console.log(`${ singleBackgroundUrl }`);
+    // });
 });   
+
 
 // $('img').on('click', function () {
 //     const imageUrl = "./assets/vancouver.png";
@@ -116,18 +130,21 @@ $(".image").click(function () {
 //     return false
 // })
 
+//loop through all the available background images and display them when the user clicks - one after another 
 
+    // allBackgroundUrls.forEach(function (item) {
+    //     const singleBackground = allBackgroundUrls[item]
 
+    // });
+    
+    // console.log(singleBackground);
 
-
-
-    //not sure yet if i need a randomizer
     const randomizer = function (array) {
         const randomArrayIndex = Math.floor(Math.random() * array.length);
         return array[randomArrayIndex]
     }
 
    const randomBackgroundURL = randomizer(allBackgroundUrls);
-    console.log(randomBackgroundURL);
+    // console.log(randomBackgroundURL);
 
 })
