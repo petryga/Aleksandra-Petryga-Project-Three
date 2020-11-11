@@ -1,0 +1,39 @@
+header {
+  text-align: center;
+}
+
+.image img {
+  height: 70vh;
+  margin: 0 auto;
+  border-bottom: 30px solid black;
+}
+
+.image {
+  background: url(/Users/ax/Dropbox/juno/bootcamp/project3/assets/aurora-purple.jpg);
+  background-size: calc(100% + 100px);
+  background-repeat: no-repeat;
+}
+
+.flex {
+  display: flex;
+}
+
+.btns {
+  margin: 0 auto;
+  justify-content: space-evenly;
+  button {
+    padding: 5px 15px;
+    background-color: darkcyan;
+    color: white;
+    text-transform: inherit;
+    letter-spacing: .2rem;
+  }
+}
+
+footer {
+justify-content: end;
+margin-top: 50px;
+.credits {
+    flex-direction: column;
+  }
+}
