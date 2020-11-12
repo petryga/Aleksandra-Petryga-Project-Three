@@ -330,6 +330,15 @@ header p {
   letter-spacing: .2rem;
   font-weight: bold;
   border-radius: 3px;
+  border: none;
+}
+
+.btns button:hover,
+.btns button:focus {
+  background-color: #FFE66D;
+  color: #292F36;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 footer {

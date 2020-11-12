@@ -1,6 +1,11 @@
+
+const myApp = {};
+
+myApp.init = () => {
+
 //add a function to make the background move with mouse position
 // Chris Boon codepen
-$(function () {
+
     const movementStrength = 25;
     const height = movementStrength / $(window).height();
     const width = movementStrength / $(window).width();
@@ -13,72 +18,55 @@ $(function () {
         $('.image').css("background-position", newvalueX + "px     " + newvalueY + "px");
     });
 
-
-//create a randomizer???? or just a loop
-//be sure to prevent display of a current picture
-
-//add event listener on the background image that will fire off once the user clicks the background image
-
-//loop through all the available background images
-
-//display a random background image on a page
-// ——
-// add event listener on the skyline that will fire off once the user clicks it
-//loop through all the available skyline images
-
-//display a random skyline image on a page
-// ——
-//cache the results, so if the user reloads the page, chosen options stay on the page until the user interacts with them again
-
 //create an array of all available background images
 const backgroundImages = [
     {
         mood: 'aurora',
-        url: '../assets/aurora-green.jpg',
+        url: './assets/aurora-purple.jpg',
+    },
+    {
+        mood: 'cartoon',
+        url: './assets/cartoon-blue.jpg',
+    },
+    {
+        mood: 'cartoon',
+        url: './assets/cartoon-dark-blue.jpg',
+    },
+    {
+        mood: 'cartoon',
+        url: './assets/cartoon-purple.jpg',
+    },
+    {
+        mood: 'cartoon',
+        url: './assets/cartoon-yellow.jpg',
+    },
+    {
+        mood: 'clouds',
+        url: './assets/clouds-dramatic.jpg',
+    },
+    {
+        mood: 'clouds',
+        url: './assets/clouds-pink.jpg',
     },
     {
         mood: 'aurora',
-        url: '../assets/aurora-purple.jpg',
-    },
-    {
-        mood: 'cartoon',
-        url: '../assets/cartoon-blue.jpg',
-    },
-    {
-        mood: 'cartoon',
-        url: '../assets/cartoon-dark-blue.jpg',
-    },
-    {
-        mood: 'cartoon',
-        url: '../assets/cartoon-purple.jpg',
-    },
-    {
-        mood: 'cartoon',
-        url: '../assets/cartoon-yellow.jpg',
+        url: './assets/aurora-green.jpg',
     },
     {
         mood: 'clouds',
-        url: '../assets/clouds-dramatic.jpg',
+        url: './assets/clouds-purple.jpg',
     },
     {
         mood: 'clouds',
-        url: '../assets/clouds-pink.jpg',
-    },
-    {
-        mood: 'clouds',
-        url: '../assets/clouds-purple.jpg',
-    },
-    {
-        mood: 'clouds',
-        url: '../assets/clouds-sunset.jpg',
+        url: './assets/clouds-sunset.jpg',
     },
     {
         mood: 'yellow',
-        url: '../assets/yellow-birds.jpg',
+        url: './assets/yellow-birds.jpg',
     },
     {
         mood: 'yellow',
-        url: '../assets/yellow-sun.jpg',
+        url: './assets/yellow-sun.jpg',
     },
 ]
 const skylineImages = [
@@ -94,57 +82,41 @@ const skylineImages = [
     },
 ]
 
-// get urls of all background images 
-
-const allBackgroundUrls = backgroundImages.map((item) => {
-return item.url
-})
-console.log(allBackgroundUrls);
+//add event listener on the background image that will fire off once the user clicks the background image
 
 let currentBackground = 0;
 
-$(".image").click(function (e) {
-    // backgroundImages.forEach(function (item) 
-    // {
-        e.preventDefault();
-        const singleBackgroundUrl = backgroundImages[currentBackground].url;
-
-       
-        // console.log(item.url);
-
-    $(".image").css("background-image", "../assets/yellow-sun.jpg");
-        
-        // `url(${singleBackgroundUrl})`);
+$(".image").click(function () {
+    // get urls of all background images 
+    let imageURL = backgroundImages[currentBackground].url;
+    
+    //loop through all the available background images and display them when the user clicks - one after another 
+        $('.image').css('background-image', `url(${imageURL})`);
         currentBackground++;
-        if (currentBackground === backgroundImages.length)
-        currentBackground = 0
+        if (currentBackground >= backgroundImages.length) {
+            currentBackground = 0;
+        }
+    });
 
-        console.log(`${ singleBackgroundUrl }`);
-    // });
-});   
-
+// add event listener on the skyline that will fire off once the user clicks it
+//display a next skyline image on a page
 
 // $('img').on('click', function () {
 //     const imageUrl = "./assets/vancouver.png";
 //     $('#toronto').attr('src', imageUrl, 'alt', 'vancouver')
 //     return false
 // })
+ 
 
-//loop through all the available background images and display them when the user clicks - one after another 
+ //get user's input - event listener on button click
 
-    // allBackgroundUrls.forEach(function (item) {
-    //     const singleBackground = allBackgroundUrls[item]
-
-    // });
-    
-    // console.log(singleBackground);
-
+ //create a randomizer
     const randomizer = function (array) {
         const randomArrayIndex = Math.floor(Math.random() * array.length);
         return array[randomArrayIndex]
     }
-
-   const randomBackgroundURL = randomizer(allBackgroundUrls);
-    // console.log(randomBackgroundURL);
-
-})
+ //use randomizer to select backgrounds that correspond to user’s choice and display them on the page
+}
+$(function () {
+    myApp.init()
+});

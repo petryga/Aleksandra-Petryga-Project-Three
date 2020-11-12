@@ -43,6 +43,13 @@ header {
     letter-spacing: .2rem;
     font-weight: bold;
     border-radius: 3px;
+    border: none;
+  }
+  button:hover,
+  button:focus {
+    background-color: $yellow;
+    color: $gunmetal;
+    transition: 0.3s;
   }
 }
 
