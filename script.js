@@ -1,25 +1,6 @@
-
 const myApp = {};
-
-myApp.init = () => {
-
-//add a function to make the background move with mouse position
-// Chris Boon codepen
-
-    const movementStrength = 25;
-    const height = movementStrength / $(window).height();
-    const width = movementStrength / $(window).width();
-    $(".image").mousemove(function (e) {
-        const pageX = e.pageX - ($(window).width() / 2);
-        const pageY = e.pageY - ($(window).height() / 2);
-        const newvalueX = width * pageX * -1 - 50;
-        const newvalueY = height * pageY * -1 - 50;
-        //    $('.image').css("background-position", newvalueX + "px     ");
-        $('.image').css("background-position", newvalueX + "px     " + newvalueY + "px");
-    });
-
 //create an array of all available background images
-const backgroundImages = [
+myApp.backgroundImages = [
     {
         mood: 'aurora',
         url: './assets/aurora-purple.jpg',
@@ -69,7 +50,7 @@ const backgroundImages = [
         url: './assets/yellow-sun.jpg',
     },
 ]
-const skylineImages = [
+myApp.skylineImages = [
     {
         name: 'toronto',
         url: './assets/toronto.png',
@@ -82,41 +63,81 @@ const skylineImages = [
     },
 ]
 
-//add event listener on the background image that will fire off once the user clicks the background image
+myApp.init = () => {
 
-let currentBackground = 0;
+        //add a function to make the background move with mouse position
+    // thanks to Chris Boon's codepen
+    myApp.movingMouse = function () {
+        const movementStrength = 25;
+        const height = movementStrength / $(window).height();
+        const width = movementStrength / $(window).width();
+        $(".image").mousemove(function (e) {
+            const pageX = e.pageX - ($(window).width() / 2);
+            const pageY = e.pageY - ($(window).height() / 2);
+            const newvalueX = width * pageX * -1 - 50;
+            const newvalueY = height * pageY * -1 - 50;
+            //    $('.image').css("background-position", newvalueX + "px     ");
+            $('.image').css("background-position", newvalueX + "px     " + newvalueY + "px");
+        });
+    }
 
-$(".image").click(function () {
-    // get urls of all background images 
-    let imageURL = backgroundImages[currentBackground].url;
+    // create a randomizer
+    myApp.randomizer = function (array) {
+        const randomArrayIndex = Math.floor(Math.random() * array.length);
+        return array[randomArrayIndex];
+    }
+
+//get user's input - event listener on button click
+$('button').on('click', function (event) {
+    event.preventDefault();
+    //get button values after user click on it - clouds, aurora, yellow etc - and store them in a variable
+    const userChoice = this.id; 
+
+    const backgroundsToDisplay = [];
+
+    for (let i = 0; i < myApp.backgroundImages.length; i++) {
+        //get all moods in array
+        const backgroundMoods = myApp.backgroundImages[i].mood; 
+        // see if the mood selected by user matches the background mood value
+        if (backgroundMoods === userChoice) {
+            // if they match, push background urls to empty array
+            backgroundsToDisplay.push(myApp.backgroundImages[i].url);
+        }
+
+        //use randomizer for background urls 
+    const finalBackgroundsToDisplay = myApp.randomizer(backgroundsToDisplay);
     
-    //loop through all the available background images and display them when the user clicks - one after another 
+    //display them on the page
+    $('.image').css('background-image', `url(${finalBackgroundsToDisplay})`);
+}
+})
+
+
+
+    //add event listener on the background image that will fire off once the user clicks the background image
+    myApp.currentBackground = 0;
+
+    $(".image").click(function () {
+        // get urls of all background images 
+        let imageURL = myApp.backgroundImages[myApp.currentBackground].url;
+        //loop through all the available background images and display them when the user clicks - one after another 
         $('.image').css('background-image', `url(${imageURL})`);
-        currentBackground++;
-        if (currentBackground >= backgroundImages.length) {
-            currentBackground = 0;
+        myApp.currentBackground++;
+        if (myApp.currentBackground >= myApp.backgroundImages.length) {
+            myApp.currentBackground = 0;
         }
     });
 
-// add event listener on the skyline that will fire off once the user clicks it
-//display a next skyline image on a page
+    // add event listener on the skyline that will fire off once the user clicks it
+    //display a next skyline image on a page
 
-// $('img').on('click', function () {
-//     const imageUrl = "./assets/vancouver.png";
-//     $('#toronto').attr('src', imageUrl, 'alt', 'vancouver')
-//     return false
-// })
- 
-
- //get user's input - event listener on button click
-
- //create a randomizer
-    const randomizer = function (array) {
-        const randomArrayIndex = Math.floor(Math.random() * array.length);
-        return array[randomArrayIndex]
-    }
- //use randomizer to select backgrounds that correspond to user’s choice and display them on the page
+    // $('img').on('click', function () {
+    //     const imageUrl = "./assets/vancouver.png";
+    //     $('#toronto').attr('src', imageUrl, 'alt', 'vancouver')
+    //     return false
+    // })
 }
 $(function () {
     myApp.init()
+    myApp.movingMouse()
 });
