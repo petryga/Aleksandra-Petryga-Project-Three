@@ -13,7 +13,9 @@ header {
     margin-bottom: 2rem;
   }
 }
-
+:focus {
+  border: 3px solid red;
+}
 .image img {
   height: 70vh;
   margin: 0 auto;

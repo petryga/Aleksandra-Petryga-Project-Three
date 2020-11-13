@@ -4,30 +4,37 @@ myApp.backgroundImages = [
     {
         mood: 'aurora',
         url: './assets/aurora-purple.jpg',
+        alt: 'some alt text 1',
     },
     {
         mood: 'cartoon',
         url: './assets/cartoon-blue.jpg',
+        alt: 'some alt text 3',
     },
     {
         mood: 'cartoon',
         url: './assets/cartoon-dark-blue.jpg',
+        alt: 'some alt text 3',
     },
     {
         mood: 'cartoon',
         url: './assets/cartoon-purple.jpg',
+        alt: 'some alt text 4',
     },
     {
         mood: 'cartoon',
         url: './assets/cartoon-yellow.jpg',
+        alt: '',
     },
     {
         mood: 'clouds',
         url: './assets/clouds-dramatic.jpg',
+        alt: '',
     },
     {
         mood: 'clouds',
         url: './assets/clouds-pink.jpg',
+        alt: '',
     },
     {
         mood: 'aurora',
@@ -36,18 +43,22 @@ myApp.backgroundImages = [
     {
         mood: 'clouds',
         url: './assets/clouds-purple.jpg',
+        alt: '',
     },
     {
         mood: 'clouds',
         url: './assets/clouds-sunset.jpg',
+        alt: '',
     },
     {
         mood: 'yellow',
         url: './assets/yellow-birds.jpg',
+        alt: '',
     },
     {
         mood: 'yellow',
         url: './assets/yellow-sun.jpg',
+        alt: '',
     },
 ]
 myApp.skylineImages = [
@@ -65,7 +76,7 @@ myApp.skylineImages = [
 
 myApp.init = () => {
 
-        //add a function to make the background move with mouse position
+    //add a function to make the background move with mouse position
     // thanks to Chris Boon's codepen
     myApp.movingMouse = function () {
         const movementStrength = 25;
@@ -87,30 +98,30 @@ myApp.init = () => {
         return array[randomArrayIndex];
     }
 
-//get user's input - event listener on button click
-$('button').on('click', function (event) {
-    event.preventDefault();
-    //get button values after user click on it - clouds, aurora, yellow etc - and store them in a variable
-    const userChoice = this.id; 
+    //get user's input - event listener on button click
+    $('button').on('click', function (event) {
+        event.preventDefault();
+        //get button values after user click on it - clouds, aurora, yellow etc - and store them in a variable
+        const userChoice = this.id;
 
-    const backgroundsToDisplay = [];
+        const backgroundsToDisplay = [];
 
-    for (let i = 0; i < myApp.backgroundImages.length; i++) {
-        //get all moods in array
-        const backgroundMoods = myApp.backgroundImages[i].mood; 
-        // see if the mood selected by user matches the background mood value
-        if (backgroundMoods === userChoice) {
-            // if they match, push background urls to empty array
-            backgroundsToDisplay.push(myApp.backgroundImages[i].url);
+        for (let i = 0; i < myApp.backgroundImages.length; i++) {
+            //get all moods in array
+            const backgroundMoods = myApp.backgroundImages[i].mood;
+            // see if the mood selected by user matches the background mood value
+            if (backgroundMoods === userChoice) {
+                // if they match, push background urls to empty array
+                backgroundsToDisplay.push(myApp.backgroundImages[i].url);
+            }
+
+            //use randomizer for background urls 
+            const finalBackgroundsToDisplay = myApp.randomizer(backgroundsToDisplay);
+
+            //display them on the page
+            $('.image').css('background-image', `url(${finalBackgroundsToDisplay})`);
         }
-
-        //use randomizer for background urls 
-    const finalBackgroundsToDisplay = myApp.randomizer(backgroundsToDisplay);
-    
-    //display them on the page
-    $('.image').css('background-image', `url(${finalBackgroundsToDisplay})`);
-}
-})
+    });
 
 
 
@@ -118,18 +129,31 @@ $('button').on('click', function (event) {
     myApp.currentBackground = 0;
 
     $(".image").click(function () {
+
         // get urls of all background images 
         let imageURL = myApp.backgroundImages[myApp.currentBackground].url;
+
         //loop through all the available background images and display them when the user clicks - one after another 
         $('.image').css('background-image', `url(${imageURL})`);
         myApp.currentBackground++;
         if (myApp.currentBackground >= myApp.backgroundImages.length) {
             myApp.currentBackground = 0;
         }
+        //add animation - doesn't work because same div - add if skyline canvas is fixed
+        // $('.image').not('img').fadeOut( "slow", function() {
+        //     $('.image').not('img').fadeIn('slow');
+        // });
+// ALT
+        // $('.image').attr('alt', `(${myApp.backgroundImages[i].alt})`);
+
+        //add tabindex
+        $(this).each(function (i) {
+            $(this).attr('tabindex', i + 1)
+        });
     });
 
     // add event listener on the skyline that will fire off once the user clicks it
-    //display a next skyline image on a page
+    // display a next skyline image on a page
 
     // $('img').on('click', function () {
     //     const imageUrl = "./assets/vancouver.png";
@@ -138,6 +162,6 @@ $('button').on('click', function (event) {
     // })
 }
 $(function () {
-    myApp.init()
-    myApp.movingMouse()
+    myApp.init();
+    myApp.movingMouse();
 });
