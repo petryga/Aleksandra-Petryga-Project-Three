@@ -1,40 +1,103 @@
+    /** FROM https://ourcodeworld.com/articles/read/185/how-to-get-the-pixel-color-from-a-canvas-on-click-or-mouse-event-with-javascript**/
+
+    const canvas = $('#canvas')[0]
+
+    function getElementPosition(obj) {
+        let curleft = 0, curtop = 0;
+        if (obj.offsetParent) {
+            do {
+                curleft += obj.offsetLeft;
+                curtop += obj.offsetTop;
+            } while (obj = obj.offsetParent);
+            return { x: curleft, y: curtop };
+        }
+        return undefined;
+    }
+
+    function getEventLocation(element, event) {
+        const pos = getElementPosition(element);
+
+        return {
+            x: (event.pageX - pos.x),
+            y: (event.pageY - pos.y)
+        };
+    }
+
+    function rgbToHex(r, g, b) {
+        if (r > 255 || g > 255 || b > 255)
+            throw "Invalid color component";
+        return ((r << 16) | (g << 8) | b).toString(16);
+    }
+
+    function drawImageFromWebUrl(sourceurl) {
+        const img = new Image();
+
+        img.addEventListener("load", function () {
+            // The image can be drawn from any source
+            canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+
+        });
+
+        img.setAttribute("src", sourceurl);
+    }
+    // Draw a base64 image because this is a fiddle, and if we try with an image from URL we'll get tainted canvas error
+    // Read more about here : http://ourcodeworld.com/articles/read/182/the-canvas-has-been-tainted-by-cross-origin-data-and-tainted-canvases-may-not-be-exported
+    let img = document.getElementById('img');
+    canvas.getContext("2d").drawImage(img, 10, 10);
+    canvas.addEventListener("click", function (e) {
+        const eventLocation = getEventLocation(this, e);
+        const coord = "x=" + eventLocation.x + ", y=" + eventLocation.y;
+
+        // Get the data of the pixel according to the location generate by the getEventLocation function
+        const context = this.getContext('2d');
+        const pixelData = context.getImageData(eventLocation.x, eventLocation.y, 1, 1).data;
+
+        // If transparency on the image
+        if ((pixelData[0] == 0) && (pixelData[1] == 0) && (pixelData[2] == 0) && (pixelData[3] == 0)) {
+            console.log("it is transparent");
+        } else {
+            console.log("It is not transparent");
+        }
+
+        // var hex = "#" + ("000000" + rgbToHex(pixelData[0], pixelData[1], pixelData[2])).slice(-6);
+
+        // Draw the color and coordinates.
+        // document.getElementById("status").innerHTML = coord;
+        // document.getElementById("color").style.backgroundColor = hex;
+    }, false);
+
+
+
 const myApp = {};
 //create an array of all available background images
 myApp.backgroundImages = [
     {
         mood: 'aurora',
         url: './assets/aurora-purple.jpg',
-        alt: 'some alt text 1',
     },
     {
         mood: 'cartoon',
         url: './assets/cartoon-blue.jpg',
-        alt: 'some alt text 3',
     },
     {
         mood: 'cartoon',
         url: './assets/cartoon-dark-blue.jpg',
-        alt: 'some alt text 3',
     },
     {
         mood: 'cartoon',
         url: './assets/cartoon-purple.jpg',
-        alt: 'some alt text 4',
     },
     {
         mood: 'cartoon',
         url: './assets/cartoon-yellow.jpg',
-        alt: '',
     },
     {
         mood: 'clouds',
         url: './assets/clouds-dramatic.jpg',
-        alt: '',
     },
     {
         mood: 'clouds',
         url: './assets/clouds-pink.jpg',
-        alt: '',
     },
     {
         mood: 'aurora',
@@ -43,22 +106,18 @@ myApp.backgroundImages = [
     {
         mood: 'clouds',
         url: './assets/clouds-purple.jpg',
-        alt: '',
     },
     {
         mood: 'clouds',
         url: './assets/clouds-sunset.jpg',
-        alt: '',
     },
     {
         mood: 'yellow',
         url: './assets/yellow-birds.jpg',
-        alt: '',
     },
     {
         mood: 'yellow',
         url: './assets/yellow-sun.jpg',
-        alt: '',
     },
 ]
 myApp.skylineImages = [
@@ -143,8 +202,6 @@ myApp.init = () => {
         // $('.image').not('img').fadeOut( "slow", function() {
         //     $('.image').not('img').fadeIn('slow');
         // });
-// ALT
-        // $('.image').attr('alt', `(${myApp.backgroundImages[i].alt})`);
 
         //add tabindex
         $(this).each(function (i) {
@@ -160,6 +217,18 @@ myApp.init = () => {
     //     $('#toronto').attr('src', imageUrl, 'alt', 'vancouver')
     //     return false
     // })
+
+
+
+
+
+
+
+
+
+
+
+
 }
 $(function () {
     myApp.init();
