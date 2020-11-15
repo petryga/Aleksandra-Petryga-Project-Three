@@ -14,27 +14,22 @@
   <body>
     <header class="wrapper">
       <h1>PICK YOUR MOOD OR CLICK ON THE IMAGE</h1>
-      <p>Hint: Try clicking on the background OR the skyline</p>
+      <p>Hint: Try clicking on the background OR tab to it and press space</p>
     </header>
 
-    <main>
-      <canvas id="canvas" width="150" height="150"></canvas>
-      <div id="status"></div><br>
-      <div id="color" style="width:30px;height:30px;"></div>
-
-
-
-      <div class="image" tabindex="0">
+    <main class="wrapper">
+      <div class="image" id="bg-img" tabindex="0">
         <img
-          id="img"
+          id="skyline-img"
           src="./assets/toronto.png"
           alt="black Toronto skyline"
-          id="toronto"
+    
         />
       </div>
       <div class="btns flex wrapper">
         <button id="aurora">Aurora Borealis</button>
         <button id="cartoon">Cartoon!</button>
+        <button class="skyline-btn" id="skyline-btn">Change the skyline</button> 
         <button id="clouds">Fancy Clouds</button>
         <button id="yellow">Yellow Tones</button>
       </div>

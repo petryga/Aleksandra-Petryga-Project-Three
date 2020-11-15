@@ -202,15 +202,6 @@ template {
   display: none;
 }
 
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: '';
-  clear: both;
-  height: 0;
-}
-
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -221,24 +212,9 @@ html {
           box-sizing: inherit;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
 * {
   margin: 0;
   padding: 0;
-  border: 1px solid rebeccapurple;
 }
 
 html {
@@ -296,12 +272,8 @@ header p {
   margin-bottom: 2rem;
 }
 
-:focus {
-  border: 3px solid red;
-}
-
 .image img {
-  height: 70vh;
+  height: 80%;
   margin: 0 auto;
   border-bottom: 30px solid black;
 }
@@ -327,7 +299,7 @@ header p {
 
 .btns button {
   font-family: 'Lato', sans-serif;
-  padding: 10px 25px;
+  padding: 1rem 2.5rem;
   background-color: #FF6B6B;
   color: #F7FFF7;
   text-transform: inherit;
@@ -345,6 +317,18 @@ header p {
   transition: 0.3s;
 }
 
+.btns .skyline-btn {
+  background-color: #FFE66D;
+  color: #292F36;
+  border: 1px solid #FF6B6B;
+}
+
+.btns .skyline-btn:hover,
+.btns .skyline-btn:focus {
+  background-color: #FF6B6B;
+  color: #F7FFF7;
+}
+
 footer {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -357,4 +341,62 @@ footer .credits {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media (max-width: 860px) {
+  .btns button,
+  .btns .skyline-btn {
+    padding: 1rem 1.5rem;
+    letter-spacing: none;
+  }
+}
+
+@media (max-width: 755px) {
+  header p {
+    font-size: 1.2rem;
+  }
+  .btns button,
+  .btns .skyline-btn {
+    padding: 1rem 0.8rem;
+    letter-spacing: none;
+  }
+}
+
+@media (max-width: 690px) {
+  header {
+    padding: 0 3rem;
+  }
+  header h1 {
+    font-size: 2.2rem;
+  }
+  header p {
+    font-size: 1.2rem;
+  }
+  .btns {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .btns button {
+    margin: 0 auto;
+    margin-top: .7rem;
+    width: 35%;
+    background-color: transparent;
+    border: 1px solid #FF6B6B;
+  }
+  .btns .skyline-btn {
+    width: 50%;
+    border: none;
+    padding: 15px 0;
+  }
+}
+
+@media (max-width: 570px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
 }

@@ -1,0 +1,76 @@
+@media (max-width: 860px) {
+  .btns {
+    button,
+    .skyline-btn {
+      padding: 1rem 1.5rem;
+      letter-spacing: none;
+    }
+  }
+}
+
+@media (max-width: 755px) {
+  header {
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  .btns {
+    button,
+    .skyline-btn {
+    //   background-color: red;
+      padding: 1rem 0.8rem;
+      letter-spacing: none;
+    }
+  }
+}
+
+@media (max-width: 690px) {
+
+    header {
+        padding: 0 3rem;
+        h1 {
+          font-size: 2.2rem;
+
+        }
+      
+        p {
+          font-size: 1.2rem;
+
+        }
+      }
+
+
+    .btns {
+        flex-direction: column;
+       
+        button {
+            margin: 0 auto;
+            margin-top: .7rem;
+            width: 35%;
+            background-color: transparent;
+            border: 1px solid $bittersweet
+            // color: $bittersweet;
+        }
+        .skyline-btn {
+            width: 50%;
+            border: none;
+            padding: 15px 0;
+        }
+    }
+
+}
+@media (max-width: 570px){
+    header {
+
+        h1 {
+          font-size: 2rem;
+
+        }
+      
+        p {
+          font-size: 1rem;
+  ;
+        }
+      }
+}
