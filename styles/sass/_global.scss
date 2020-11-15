@@ -1,4 +1,5 @@
 $gunmetal: #292F36;
+$gunmetal-light: #73767a;
 $turquoise: #4ECDC4;
 $cream: #F7FFF7; 
 $bittersweet: #FF6B6B;
@@ -29,9 +30,9 @@ img {
   display: block;
 }
 
-ul {
-  list-style: none;
-}
+// ul {
+//   list-style: none;
+// }
 
 a {
   color: inherit;
@@ -52,3 +53,6 @@ label {
 }
 
 
+.flex {
+  display: flex;
+}
