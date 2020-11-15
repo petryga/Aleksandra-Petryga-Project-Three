@@ -29,11 +29,6 @@ header {
   cursor: pointer;
 }
 
-.image:focus {
-  border-left: 1.5px solid $yellow;
-  border-right: 1.5px solid $yellow;
-}
-
 .btns {
   margin: 2rem auto;
   justify-content: space-evenly;

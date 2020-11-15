@@ -289,11 +289,6 @@ header p {
   cursor: pointer;
 }
 
-.image:focus {
-  border-left: 1.5px solid #FFE66D;
-  border-right: 1.5px solid #FFE66D;
-}
-
 .btns {
   margin: 2rem auto;
   -webkit-box-pack: space-evenly;
