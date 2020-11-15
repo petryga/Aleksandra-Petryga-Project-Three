@@ -13,17 +13,17 @@ header {
   }
 }
 
-.image img {
-  height: 80%;
-  margin: 0 auto;
-  border-bottom: 30px solid black;
-}
 
 .image {
   background-image: url(../assets/aurora-green.jpg);
   background-size: calc(100% + 100px);
   background-repeat: no-repeat;
+  // height: 80%;
 }
+          .image img {
+            margin: 0 auto;
+            border-bottom: 30px solid black;
+          }
 
 .flex {
   display: flex;

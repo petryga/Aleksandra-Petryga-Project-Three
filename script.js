@@ -43,6 +43,18 @@ myApp.backgroundImages = [
     },
     {
         mood: 'yellow',
+        url: './assets/clouds-1.jpg',
+    },
+    {
+        mood: 'clouds',
+        url: './assets/clouds-2.jpg',
+    },
+    {
+        mood: 'aurora',
+        url: './assets/aurora-3.jpg',
+    },
+    {
+        mood: 'yellow',
         url: './assets/yellow-birds.jpg',
     },
     {
