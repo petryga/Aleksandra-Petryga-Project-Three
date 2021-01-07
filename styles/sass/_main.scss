@@ -25,7 +25,8 @@ header {
   }
 }
 
-.image:hover {
+.image:hover,
+.image:focus{
   cursor: pointer;
 }
 
@@ -47,9 +48,9 @@ header {
 
   button:hover,
   button:focus {
-    background-color: $yellow;
+    background-color: $cream;
     color: $gunmetal;
-    transition: 0.3s;
+    transition: 0.5s;
     cursor: pointer;
   }
 
@@ -67,14 +68,12 @@ header {
 
 .manual {
   color: $gunmetal;
-  // font-size: smaller;
   margin: 5rem 5rem 0 5rem;
   li {
     margin-top: 1.8rem;
   }
 }
 .btn-app p {
-  // color: black;
   margin: 15rem 5rem 0 5rem;
 }
 
@@ -105,11 +104,11 @@ body {
   right: 0;
   display: table;
   text-align: center;
+  border: none;
 
   .fa {
     color: $gunmetal;
     font-size: 2em;
-    display: table-cell;
     vertical-align: middle;
     transition: 0.4s;
   }
@@ -117,6 +116,13 @@ body {
   &.open .fa {
     transform: rotate(135deg);
   }
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+  cursor: pointer;
+  background-color: white;
+  transition: .5s;
 }
 
 .btn-app {
