@@ -83,7 +83,7 @@ myApp.skylineImages = [
 ]
 
 
-//not sure if I used namespacing correctly, please let me know if there is any mistakes. 
+//not sure if I used namespacing correctly, please let me know if there is any mistakes.
 //I know it is not a requirement for this project but I was curious to try it
 
 myApp.init = () => {
@@ -122,7 +122,7 @@ myApp.init = () => {
                 // if they match, push background urls to empty array
                 backgroundsToDisplay.push(myApp.backgroundImages[i].url);
             }
-            //use randomizer for background urls 
+            //use randomizer for background urls
             const finalBackgroundsToDisplay = myApp.randomizer(backgroundsToDisplay);
             //display them on the page
             $($image).css('background-image', `url(${finalBackgroundsToDisplay})`);
@@ -143,9 +143,9 @@ myApp.init = () => {
     })
 
     myApp.backgroundUpdater = function () {
-        // get urls of all background images 
+        // get urls of all background images
         let imageURL = myApp.backgroundImages[myApp.currentBackground].url;
-        //go through all the available background images and display them when the user clicks - one after another 
+        //go through all the available background images and display them when the user clicks - one after another
         $($image).css('background-image', `url(${imageURL})`);
         myApp.currentBackground++;
         if (myApp.currentBackground >= myApp.backgroundImages.length) {
@@ -171,12 +171,12 @@ myApp.init = () => {
         }
     });
 
-    //circular menu on/off
-    $('.menu-toggle').click(function () {
-        $('.menu-toggle').toggleClass('open');
-        $('.menu-round').toggleClass('open');
-        $('.menu-line').toggleClass('open');
-    });
+    // //circular menu on/off
+    // $('.menu-toggle').click(function () {
+    //     $('.menu-toggle').toggleClass('open');
+    //     $('.menu-round').toggleClass('open');
+    //     $('.menu-line').toggleClass('open');
+    // });
 }
 
 $(function () {

@@ -1,68 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Toronto / Vancouver Skyline</title>
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="icon" type="image/png" href="./assets/favicon.ico" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://kit.fontawesome.com/d077a2a063.js" crossorigin="anonymous"></script>
-  </head>
 
-  <body>
-    <header class="wrapper">
-      <h1>PICK YOUR MOOD OR CLICK ON THE IMAGE</h1>
-      <p>
-        Hint: Try clicking on the background
-        <span>OR tab to it and press space</span>
-      </p>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toronto / Vancouver Skyline</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="icon" type="image/png" href="./assets/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/19d6d4981c.js" crossorigin="anonymous"></script>
+</head>
 
-    <main class="wrapper">
-      <div class="image" id="bg-img" tabindex="0">
-        <img
-          id="skyline-img"
-          src="./assets/toronto1.png"
-          alt="black Toronto skyline"
-        />
-      </div>
-      <div class="btns flex wrapper">
-        <button id="aurora">Northern Lights</button>
-        <button id="cartoon">Cartoon!</button>
-        <button class="skyline-btn" id="skyline-btn">Change the skyline</button>
-        <button id="clouds">Fancy Clouds</button>
-        <button id="yellow">Yellow Tones</button>
-      </div>
-      
-      <div class="container">
-        <button class="menu-toggle" tabindex="0">
-          <span class="fa fa-plus"></span>
-        </button>
+<body>
+  <header class="wrapper">
+    <h1>PICK YOUR MOOD OR CLICK ON THE IMAGE</h1>
+    <p>
+      Hint: Try clicking on the background
+      <span>OR tab to it and press space</span>
+    </p>
+  </header>
 
-        <div class="menu-line">
-          <div class="btn-app">
-            <ul class="manual">
-              <li>
-                If you click on a background image, you will be able to see all the
-                images available, one by one
-              </li>
-              <li>
-                Clicking on the red button gives you a random image that is matching
-                your choice
-              </li>
-              <li>Pick between two skylines by clicking the middle button</li>
-            </ul>
-            <p>Aleksandra Petryga @ Juno College 2020</p>
-          </div>
+  <main class="wrapper">
+    <div class="image" id="bg-img" tabindex="0">
+      <img id="skyline-img" src="./assets/toronto1.png" alt="black Toronto skyline" />
+    </div>
+    <div class="btns flex wrapper">
+      <button id="aurora">Northern Lights</button>
+      <button id="cartoon">Cartoon!</button>
+      <button class="skyline-btn" id="skyline-btn">Change the skyline</button>
+      <button id="clouds">Fancy Clouds</button>
+      <button id="yellow">Yellow Tones</button>
+    </div>
+
+    <!-- <div class="container">
+      <button class="menu-toggle" tabindex="0">
+        <span class="fa fa-plus"></span>
+      </button>
+
+      <div class="menu-line">
+        <div class="btn-app">
+          <ul class="manual">
+            <li>
+              If you click on a background image, you will be able to see all the
+              images available, one by one
+            </li>
+            <li>
+              Clicking on the red button gives you a random image that is matching
+              your choice
+            </li>
+            <li>Pick between two skylines by clicking the middle button</li>
+          </ul>
+          <p>Aleksandra Petryga @ Juno College 2020</p>
         </div>
       </div>
-    </main>
+    </div> -->
+  </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
