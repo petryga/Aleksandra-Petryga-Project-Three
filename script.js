@@ -83,23 +83,23 @@ myApp.skylineImages = [
 ]
 
 
-//not sure if I used namespacing correctly, please let me know if there is any mistakes. 
+//not sure if I used namespacing correctly, please let me know if there is any mistakes.
 //I know it is not a requirement for this project but I was curious to try it
 
 myApp.init = () => {
-
+    const $image = $('.image');
     //add a function to make the background move with mouse position
     // thanks to Chris Boon's codepen (https://codepen.io/chrisboon27/pen/rEDIC)
     myApp.movingMouse = function () {
         const movementStrength = 25;
         const height = movementStrength / $(window).height();
         const width = movementStrength / $(window).width();
-        $('.image').mousemove(function (e) {
+        $($image).mousemove(function (e) {
             const pageX = e.pageX - ($(window).width() / 2);
             const pageY = e.pageY - ($(window).height() / 2);
             const newvalueX = width * pageX * -1 - 50;
             const newvalueY = height * pageY * -1 - 50;
-            $('.image').css('background-position', newvalueX + 'px     ' + newvalueY + 'px');
+            $($image).css('background-position', newvalueX + 'px     ' + newvalueY + 'px');
         });
     }
 
@@ -122,10 +122,10 @@ myApp.init = () => {
                 // if they match, push background urls to empty array
                 backgroundsToDisplay.push(myApp.backgroundImages[i].url);
             }
-            //use randomizer for background urls 
+            //use randomizer for background urls
             const finalBackgroundsToDisplay = myApp.randomizer(backgroundsToDisplay);
             //display them on the page
-            $('.image').css('background-image', `url(${finalBackgroundsToDisplay})`);
+            $($image).css('background-image', `url(${finalBackgroundsToDisplay})`);
         }
     });
 
@@ -143,10 +143,10 @@ myApp.init = () => {
     })
 
     myApp.backgroundUpdater = function () {
-        // get urls of all background images 
+        // get urls of all background images
         let imageURL = myApp.backgroundImages[myApp.currentBackground].url;
-        //go through all the available background images and display them when the user clicks - one after another 
-        $('.image').css('background-image', `url(${imageURL})`);
+        //go through all the available background images and display them when the user clicks - one after another
+        $($image).css('background-image', `url(${imageURL})`);
         myApp.currentBackground++;
         if (myApp.currentBackground >= myApp.backgroundImages.length) {
             myApp.currentBackground = 0;
@@ -159,25 +159,24 @@ myApp.init = () => {
 
     //add event listener on the background image that will fire off once the user clicks the background image
     myApp.currentBackground = 0;
-    $('.image').on('click', function () {
+    $($image).on('click', function () {
         myApp.backgroundUpdater();
     });
 
     // let user change the background image by pressing space key - a11y
-    $('.image').on('keydown', function (e) {
+    $($image).on('keydown', function (e) {
         let code = e.keyCode || e.which;
         if (code == 32) {
             myApp.backgroundUpdater();
         }
     });
 
-    //circular menu on/off
-    $('.menu-toggle').click(function () {
-        $('.menu-toggle').toggleClass('open');
-        $('.menu-round').toggleClass('open');
-        $('.menu-line').toggleClass('open');
-    });
-
+    // //circular menu on/off
+    // $('.menu-toggle').click(function () {
+    //     $('.menu-toggle').toggleClass('open');
+    //     $('.menu-round').toggleClass('open');
+    //     $('.menu-line').toggleClass('open');
+    // });
 }
 
 $(function () {
